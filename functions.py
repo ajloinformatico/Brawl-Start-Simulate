@@ -26,9 +26,9 @@ def check_only_one_player_exists(player: str):
     :param player (str): String of player to look for
     :return (bool): True if player exists, False if not exists
     """
-    players = show_players()
+    players = show_players().split()
     for player in players:
-        if player in players:
+        if player == players:
             return True
     return False
 
@@ -48,15 +48,15 @@ def not_number(n):
 
 
 
-def create_new_user(name: str):
+def create_new_user(ruta: str):
     """
     Create a new file for a new player
     :param (str): name of the player
     :return (void): just create a file for player
     """
-    file = open("players/"+name, "w")
+    file = open(ruta, "w")
+    print("create")
     file.close()
-
 
 
 def count_number_of_lines(ruta: str):

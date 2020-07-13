@@ -1,0 +1,10 @@
+
+__pycache__/functions.cpython-37.pyc
+*.pyc
+.idea/vcs.xml
+.idea/modules.xml
+.idea/misc.xml
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/BrawlersStart-Simulate.iml
+.idea/misc.xml
+*.xml
