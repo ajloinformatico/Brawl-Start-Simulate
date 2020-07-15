@@ -109,7 +109,7 @@ Welcome to the opening of Brawlers Stars packages"
         elif len(elec.split()) == 2 and elec.split()[0] == "simulate" and not functions.not_number(elec.split()[1]):
             days = int(elec.split()[1])
             if days > 0 and days <= 10:
-                print("working in yout simulate simulate\n...Your cards are")
+                print("working in yout simulate simulate...\nYour cards are")
                 time.sleep(3)
                 for i in range(days):
                     # todo write it on the loop Player class and after that check for type or win RandomCards Class
