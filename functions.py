@@ -88,5 +88,4 @@ def load_dic_from_file(ruta: str):
             value = manf.readline().rstrip()
             key = manf.readline().rstrip()
             dic[key] = value
-    print(dic)
     return dic

@@ -61,18 +61,24 @@ class RandomCards:
         """
         types = ["e", "s", "ep", "m", "l"]
         type_selected = random.choice(types)
-        print(type_selected)
         if type_selected == "e":
-            return random.choice(self.especial)
+            return self.random_from_dic(self.especial)
         elif type_selected == "s":
-            return random.choice(self.super_especial)
+            return self.random_from_dic(self.super_especial)
         elif type_selected == "ep":
-            return random.choice(self.epico)
+            return self.random_from_dic(self.epico)
         elif type_selected == "m":
-            return random.choice(self.mitico)
+            return self.random_from_dic(self.mitico)
         elif type_selected == "l":
-            return random.choice(self.legendario)
+            return self.random_from_dic(self.legendario)
 
+
+
+    def random_from_dic(self, dic):
+        key = random.choice(list(dic))
+        for c, v in dic.items():
+            if c == key:
+                return c, v
 
 
     def __str__(self):
@@ -80,19 +86,19 @@ class RandomCards:
         Return toString of the content from the dictionaries
         :return (str): return the content of the self dics
         """
-        result = "Brawlers:\nEspeciales = \t"
+        result = "Brawlers:\nEspeciales = \t\t> "
         for c,v in self.especial.items():
             result += c + " : " + v + "\t"
-        result += "\nSuper Especiales = \t"
+        result += "\nSuper Especiales = \t> "
         for c,v in self.super_especial.items():
             result += c + " : " + v + "\t"
-        result += "\nEpicos = \t"
+        result += "\nEpicos = \t\t\t> "
         for c,v in self.mitico.items():
             result += c + " : " + v + "\t"
-        result += "\nMíticos = \t"
+        result += "\nMíticos = \t\t\t> "
         for c,v in self.mitico.items():
             result += c + " : " + v + "\t"
-        result += "\nLegendarios = \t"
+        result += "\nLegendarios = \t\t> "
         for c, v in self.legendario.items():
             result += c + " : " + v + "\t"
         return  result
