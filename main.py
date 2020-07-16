@@ -19,8 +19,37 @@ Welcome to the opening of Brawlers Stars packages"
 """)
 
 
-    # First Ensures if there is any player
+    # Login
     #todo only a function to check if exists player change all loging
+    while(True):
+        if functions.check_exists_players():
+            # todo exists player
+            print("Please choose a name from the list or create a new game writing a diferent name.\nIf you want to exit please"
+                  "enter \"end\" or \"exit\"")
+            name = input("\n>>>").lower()
+            # exit
+            if name == "exit" or name == "end":
+                exit(0)
+            # login with an user
+            elif functions.check_only_one_player_exists(name):
+                print("Welcome to your game ",name.capitalize())
+                break
+
+            else:
+                # check if its a name
+                if functions.not_number(name):
+                    print("Creating a new game for ",name.capitalize()),"\n..."
+                    time.sleep(3)
+                    # create a new user
+                    functions.create_new_user(name)
+                    break
+                else:
+                    print("Sorry your name is not valid.")
+
+        else:
+            # todo  preperae dont exists player
+
+    """
     if functions.check_exists_players():
         while(True):
             print("Please Choose a name form the list.\nOr create a new new game writing a different name.\nIf ypu want to exit write end or exit.")
@@ -67,7 +96,7 @@ Welcome to the opening of Brawlers Stars packages"
                 continue
 
 
-
+    """
     # after login
     comands = """
     **************************************************
