@@ -4,7 +4,21 @@ import time
 from Classes import *
 
 
-
+def check_and_create_new(name: str):
+    """
+    Simple function that check to create a new player
+    : param name (str): string for the new plaer
+    : returns True (bool): if player was created
+    : returns reply (str): if player isnt created
+    """
+    if functions.not_number(name) and len(name) > 1:
+        print("Creating a new game for ", name.capitalize()), "\n..."
+        time.sleep(3)
+        # create a new user
+        functions.create_new_user(name)
+        return True
+    else:
+        return "Sorry your name is not valid."
 
 
 if __name__ == "__main__":
@@ -18,36 +32,42 @@ Welcome to the opening of Brawlers Stars packages"
 **************************************************
 """)
 
-
     # Login
-    #todo only a function to check if exists player change all loging
-    while(True):
+    while (True):
+        # check if exists players
+        # if players exists do it
         if functions.check_exists_players():
             # todo exists player
-            print("Please choose a name from the list or create a new game writing a diferent name.\nIf you want to exit please"
-                  "enter \"end\" or \"exit\"")
+            print(
+                "Please choose a name from the list or create a new game writing a diferent name.\nIf you want to exit please"
+                "enter \"end\" or \"exit\"")
             name = input("\n>>>").lower()
             # exit
             if name == "exit" or name == "end":
                 exit(0)
             # login with an user
             elif functions.check_only_one_player_exists(name):
-                print("Welcome to your game ",name.capitalize())
+                print("Welcome to your game ", name.capitalize())
                 break
 
             else:
                 # check if its a name
-                if functions.not_number(name):
-                    print("Creating a new game for ",name.capitalize()),"\n..."
-                    time.sleep(3)
-                    # create a new user
-                    functions.create_new_user(name)
+                if check_and_create_new(name):
                     break
                 else:
-                    print("Sorry your name is not valid.")
+                    print(check_and_create_new(name))
+
 
         else:
-            # todo  preperae dont exists player
+            print(
+                "Welcome to Brawl-Start-Simulate\nThere isnt any Game please create one by \"writing a name\".\nif you want to exit.\nPlease enter \"exit\" or \"end\"")
+            name = input("\n>>> ").lower()
+            if name == "exit" or name == "end":
+                exit(0)
+            if check_and_create_new(name):
+                break
+            else:
+                print(check_and_create_new(name))
 
     """
     if functions.check_exists_players():
@@ -116,17 +136,17 @@ Welcome to the opening of Brawlers Stars packages"
     cards_player = functions.load_dic_from_file("players/" + name)
     brawlers = RandomCards(brawlers_cards)
 
-    print("Enter a command from the list:\n"+comands)
-    while(True):
+    print("Enter a command from the list:\n" + comands)
+    while (True):
         elec = input(">>> ").lower()
-        if elec== "exit" or elec == "end":
-            print("Good bye "+ name.capitalize() +" See you latter")
+        if elec == "exit" or elec == "end":
+            print("Good bye " + name.capitalize() + " See you latter")
         elif elec == "commands" or elec == "command":
             print(comands)
 
         elif elec.split()[0] == "delete" and elec.split()[1] == "game":
             print("Your Game was deleted\nBye " + name.capitalize())
-            #todo delete file of current player
+            # todo delete file of current player
             exit()
 
         elif elec == "comands" or elec == "comand":
