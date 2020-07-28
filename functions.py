@@ -1,4 +1,7 @@
 import os
+import time
+
+
 def show_players():
     """
     Shows a list of players players have a directory
@@ -7,8 +10,9 @@ def show_players():
     """
     players = str()
     for p in os.scandir("./players"):
-        players += str(p)[11:-2] + "\n" # name of file is from 10 to -2
+        players += str(p)[11:-2] + "\n"  # name of file is from 10 to -2
     return players
+
 
 def check_exists_players():
     """
@@ -20,6 +24,7 @@ def check_exists_players():
         return True
     return False
 
+
 def check_only_one_player_exists(player: str):
     """
     Ensures if an execle player exists
@@ -27,8 +32,8 @@ def check_only_one_player_exists(player: str):
     :return (bool): True if player exists, False if not exists
     """
     players = show_players().split()
-    for player in players:
-        if player == players:
+    for p in players:
+        if p == player:
             return True
     return False
 
@@ -44,14 +49,13 @@ def not_number(n):
             int(i)
         return False
     except ValueError:
-         return True
-
+        return True
 
 
 def create_new_user(ruta: str):
     """
     Create a new file for a new player
-    :param (str): name of the player
+    :param ruta (str): name of the player
     :return (void): just create a file for player
     """
     file = open(ruta, "w")
@@ -71,7 +75,6 @@ def count_number_of_lines(ruta: str):
     return lines
 
 
-
 def load_dic_from_file(ruta: str):
     """
     Load a dic from a file. This dic will contain keys as names of characters
@@ -82,10 +85,34 @@ def load_dic_from_file(ruta: str):
     dic = {}
 
     with open(ruta, "r") as manf:
-        c = count_number_of_lines(ruta)/2 # we need the number of lines / 2
-        while(c != 0):
-            c -= 1 # for each couple rest one to the counter
+        c = count_number_of_lines(ruta) / 2  # we need the number of lines / 2
+        while (c != 0):
+            c -= 1  # for each couple rest one to the counter
             value = manf.readline().rstrip()
             key = manf.readline().rstrip()
             dic[key] = value
     return dic
+
+
+def time_sleep():
+    """
+    print sleep time
+    :return (void):
+    """
+    for i in range(3):
+        print(".", end=" ")
+        time.sleep(2)
+    print()
+
+
+def delete_game(name:str):
+    """
+    Remove current file. Which is the file where there is the player
+    :param name (str): player name to remove
+    :return (void): just close the game after show message with sleep time
+    """
+    print("Removing your file")
+    time_sleep()
+    os.remove("players/"+name)
+    print("Current player was removed\nGood bye")
+    exit(0)
