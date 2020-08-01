@@ -33,11 +33,10 @@ Welcome to the opening of Brawlers Stars packages"
 """)
 
     # Login
-    while (True):
+    while True:
         # check if exists players
         # if players exists do it
         if functions.check_exists_players():
-            # todo exists player
             print(
                 "Please choose a name from the list or create a new game writing a diferent name.\nIf you want to exit please"
                 "enter \"end\" or \"exit\"")
@@ -79,6 +78,7 @@ Welcome to the opening of Brawlers Stars packages"
     > delete game =     delete the game of the current 
                         player
     > show brawlers =   shows the brawlers letters
+    > my cards =        show your cards
     > simulate "days" = begin simulate of the game The 
                         simulation of the game begins 
                         according to the days 
@@ -88,9 +88,10 @@ Welcome to the opening of Brawlers Stars packages"
     brawlers_cards = functions.load_dic_from_file("brawlers")
     cards_player = functions.load_dic_from_file("players/" + name)
     brawlers = RandomCards(brawlers_cards)
+    player = Player(name, cards_player)
 
     print("Enter a command from the list:\n" + comands)
-    while (True):
+    while True:
         elec = input(">>> ").lower()
         if elec == "exit" or elec == "end":
             print("Good bye " + name.capitalize() + " See you latter")
@@ -107,15 +108,22 @@ Welcome to the opening of Brawlers Stars packages"
         elif elec.split()[0] == "show" and elec.split()[1] == "brawlers":
             print(brawlers)
 
+        elif elec.split()[0] == "my" and elec.split()[1] == "cards" or elec.split()[1] == "card":
+            print(player)
+
         elif len(elec.split()) == 2 and elec.split()[0] == "simulate" and not functions.not_number(elec.split()[1]):
             days = int(elec.split()[1])
             if 0 < days <= 10:
+                player.simulate(days)
+
+                """
                 print("working in yout simulate")
                 functions.time_sleep()
                 print("Your cards are;\n")
                 for i in range(days):
                     # todo write it on the loop Player class and after that check for type or win RandomCards Class
                     print(brawlers.random_card())
+                """
             else:
                 print("the days must be a number between 1 and 10")
 
