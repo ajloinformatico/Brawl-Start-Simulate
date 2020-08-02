@@ -49,7 +49,6 @@ class Player:
         self.order_cards(dic)
 
     def __str__(self):
-        #todo check if changes works
         if len(self.especial) != 0 or len(self.super_especial) != 0 or len(self.mitico) != 0 or len(self.legendario) != 0:
 
             result = "Brawlers:\nEspeciales = \t\t> "
@@ -86,7 +85,9 @@ class Player:
             else:
                 for c, v in self.legendario.items():
                     result += c + " : " + v + "\t"
-                return result
+
+            return result
+
         else:
             result = self.name.capitalize() + " has not cards yet"
             return result
@@ -157,7 +158,7 @@ class RandomCards:
         for c, v in self.super_especial.items():
             result += c + " : " + v + "\t"
         result += "\nEpicos = \t\t\t> "
-        for c, v in self.mitico.items():
+        for c, v in self.epico.items():
             result += c + " : " + v + "\t"
         result += "\nMíticos = \t\t\t> "
         for c, v in self.mitico.items():

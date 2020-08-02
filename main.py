@@ -14,11 +14,16 @@ def check_and_create_new(name: str):
     if functions.not_number(name) and len(name) > 1:
         print("Creating a new game for", name.capitalize()), "\n..."
         functions.time_sleep()
-        # create a new user
-        functions.create_new_user("players/"+name)
         return True
     else:
         return "Sorry your name is not valid."
+
+def simulate(days:str):
+    """
+    :param days (str): days for the simulate
+    :return (str): "simulate function form player class" or "not valid days"
+    """
+
 
 
 if __name__ == "__main__":
@@ -54,6 +59,9 @@ Welcome to the opening of Brawlers Stars packages"
             else:
                 # check if its a name
                 if check_and_create_new(name):
+                    # create a new user
+                    functions.create_new_user("players/"+name)
+                    print("s")
                     break
                 else:
                     print(check_and_create_new(name))
@@ -92,40 +100,32 @@ Welcome to the opening of Brawlers Stars packages"
 
     print("Enter a command from the list:\n" + comands)
     while True:
+        #todo check it
         elec = input(">>> ").lower()
-        if elec == "exit" or elec == "end":
-            print("Good bye " + name.capitalize() + " See you latter")
-            exit(0)
-        elif elec == "commands" or elec == "command":
-            print(comands)
 
-        elif elec.split()[0] == "delete" and elec.split()[1] == "game":
-            functions.delete_game(name)
-
-        elif elec == "comands" or elec == "comand":
-            print(comands)
-
-        elif elec.split()[0] == "show" and elec.split()[1] == "brawlers":
-            print(brawlers)
-
-        elif elec.split()[0] == "my" and elec.split()[1] == "cards" or elec.split()[1] == "card":
-            print(player)
-
-        elif len(elec.split()) == 2 and elec.split()[0] == "simulate" and not functions.not_number(elec.split()[1]):
-            days = int(elec.split()[1])
-            if 0 < days <= 10:
-                player.simulate(days)
-
-                """
-                print("working in yout simulate")
-                functions.time_sleep()
-                print("Your cards are;\n")
-                for i in range(days):
-                    # todo write it on the loop Player class and after that check for type or win RandomCards Class
-                    print(brawlers.random_card())
-                """
+        if len(elec) == 1:
+            if elec == "exit" or elec == "end":
+                print("Good bye " + name.capitalize() + " See you latter")
+                exit(0)
+            elif elec == "commands" or elec == "command":
+                print(comands)
             else:
-                print("the days must be a number between 1 and 10")
+                print("Sorry the command is invalid")
 
-        else:
-            print("Sorry the command is invalid")
+        elif len(elec) > 1:
+            if elec.split()[0] == "delete" and elec.split()[1] == "game":
+                functions.delete_game(name)
+            elif elec.split()[0] == "show" and elec.split()[1] == "brawlers":
+                print(brawlers)
+
+            elif elec.split()[0] == "my" and elec.split()[1] == "cards" or elec.split()[1] == "card":
+                print(player)
+
+            elif len(elec.split()) == 2 and elec.split()[0] == "simulate" and not functions.not_number(elec.split()[1]):
+                days = int(elec.split()[1])
+                if 0 < days <= 10:
+                    player.simulate(days)
+                else:
+                    print("the days must be a number between 1 and 10")
+            else:
+                print("Sorry the command is invalid")
