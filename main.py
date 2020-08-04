@@ -18,12 +18,12 @@ def check_and_create_new(name: str):
     else:
         return "Sorry your name is not valid."
 
-def simulate(days:str):
+
+def simulate(days: str):
     """
     :param days (str): days for the simulate
     :return (str): "simulate function form player class" or "not valid days"
     """
-
 
 
 if __name__ == "__main__":
@@ -60,7 +60,7 @@ Welcome to the opening of Brawlers Stars packages"
                 # check if its a name
                 if check_and_create_new(name):
                     # create a new user
-                    functions.create_new_user("players/"+name)
+                    functions.create_new_user("players/" + name)
                     print("s")
                     break
                 else:
@@ -100,32 +100,29 @@ Welcome to the opening of Brawlers Stars packages"
 
     print("Enter a command from the list:\n" + comands)
     while True:
-        #todo check it
         elec = input(">>> ").lower()
 
-        if len(elec) == 1:
-            if elec == "exit" or elec == "end":
-                print("Good bye " + name.capitalize() + " See you latter")
-                exit(0)
-            elif elec == "commands" or elec == "command":
-                print(comands)
-            else:
-                print("Sorry the command is invalid")
+        if elec == "exit" or elec == "end":
+            print("Good bye " + name.capitalize() + " See you latter")
+            exit(0)
+        if elec == "commands" or elec == "command":
+            print(comands)
 
-        elif len(elec) > 1:
+        if len(elec.split()) == 2:
+
             if elec.split()[0] == "delete" and elec.split()[1] == "game":
                 functions.delete_game(name)
-            elif elec.split()[0] == "show" and elec.split()[1] == "brawlers":
+            if elec.split()[0] == "show" and elec.split()[1] == "brawlers":
                 print(brawlers)
-
-            elif elec.split()[0] == "my" and elec.split()[1] == "cards" or elec.split()[1] == "card":
+            if elec.split()[0] == "my" and elec.split()[1] == "cards" or elec.split()[1] == "card":
                 print(player)
-
-            elif len(elec.split()) == 2 and elec.split()[0] == "simulate" and not functions.not_number(elec.split()[1]):
+            if elec.split()[0] == "simulate" and not functions.not_number(elec.split()[1]):
                 days = int(elec.split()[1])
                 if 0 < days <= 10:
                     player.simulate(days)
                 else:
                     print("the days must be a number between 1 and 10")
             else:
-                print("Sorry the command is invalid")
+                print("Sorry the command is invalid. Input \"command\" or \"commands\" to see the commands")
+        else:
+            print("Sorry the command is invalid. Input \"command\" or \"commands\" to see the commands")
