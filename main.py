@@ -20,6 +20,7 @@ def check_and_create_new(name: str):
 
 
 def simulate(days: str):
+    # todo check it to delete it
     """
     :param days (str): days for the simulate
     :return (str): "simulate function form player class" or "not valid days"
