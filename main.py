@@ -19,14 +19,6 @@ def check_and_create_new(name: str):
         return "Sorry your name is not valid."
 
 
-def simulate(days: str):
-    # todo check it to delete it
-    """
-    :param days (str): days for the simulate
-    :return (str): "simulate function form player class" or "not valid days"
-    """
-
-
 if __name__ == "__main__":
     print("""
 **************************************************
@@ -71,13 +63,13 @@ Welcome to the opening of Brawlers Stars packages"
         else:
             print(
                 "Welcome to Brawl-Start-Simulate\nThere isnt any Game please create one by \"writing a name\".\nif you want to exit.\nPlease enter \"exit\" or \"end\"")
+
             name = input("\n>>> ").lower()
             if name == "exit" or name == "end":
                 exit(0)
             if check_and_create_new(name):
-                break
-            else:
-                print(check_and_create_new(name))
+                functions.create_new_user("players/" + name)
+
     # after login
     comands = """
     **************************************************
