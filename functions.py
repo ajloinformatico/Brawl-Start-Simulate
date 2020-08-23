@@ -10,7 +10,11 @@ def show_players():
     """
     players = str()
     for p in os.scandir("./players"):
-        players += str(p)[11:-2] + "\n"  # name of file is from 10 to -2
+        p = str(p)[11:-2] # name of file is from 10 to -2
+        if p != "info.txt": # skip info file
+            players += p + "\n"
+        else:
+            continue
     return players
 
 
@@ -116,3 +120,14 @@ def delete_game(name:str):
     os.remove("players/"+name)
     print("Current player was removed\nGood bye")
     exit(0)
+
+def count(dic):
+    """
+    Count the elements of a dictionaries
+    :param dic (dict): standard dictionary
+    :return count (int): number of elements of a dictionary
+    """
+    counter = 0
+    for ele in dic:
+        counter += 1
+    return counter

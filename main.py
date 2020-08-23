@@ -39,6 +39,7 @@ Welcome to the opening of Brawlers Stars packages"
             print(
                 "Please choose a name from the list or create a new game writing a diferent name.\nIf you want to exit please"
                 "enter \"end\" or \"exit\"")
+            print(functions.show_players()) # show the players
             name = input("\n>>> ").lower()
             # exit
             if name == "exit" or name == "end":
@@ -70,6 +71,7 @@ Welcome to the opening of Brawlers Stars packages"
                 exit(0)
             if check_and_create_new(name):
                 functions.create_new_user("players/" + name)
+                break
 
     # after login
     comands = """
@@ -97,7 +99,10 @@ Welcome to the opening of Brawlers Stars packages"
         elec = input(">>> ").lower()
 
         if elec == "exit" or elec == "end":
-            print("Good bye " + name.capitalize() + " See you latter")
+            print("Saving your game")
+            functions.time_sleep()
+            player.save_game()
+            print("Good bye " + name.capitalize() +"See you latter")
             exit(0)
         if elec == "commands" or elec == "command":
             print(comands)
@@ -110,10 +115,12 @@ Welcome to the opening of Brawlers Stars packages"
                 print(brawlers)
             if elec.split()[0] == "my" and elec.split()[1] == "cards" or elec.split()[1] == "card":
                 print(player)
+                continue
             if elec.split()[0] == "simulate" and not functions.not_number(elec.split()[1]):
                 days = int(elec.split()[1])
                 if 0 < days <= 10:
                     player.simulate(days)
+                    print(player.check_winner_types())
                 else:
                     print("the days must be a number between 1 and 10")
             else:
