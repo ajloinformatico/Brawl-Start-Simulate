@@ -35,24 +35,6 @@ Si el jugador escribe <b>simular</b> seguido de un <b>número</b>, hasta un máx
 Por ejemplo:<br>
 <b>simular 9</b>
 </li>
-<li>
-Cada día se abrirán dos cajas brawler. Cada caja brawler puede traer un brawler con la siguiente probabilidad en sus tipos.<br>
-<ul>
-<li>legendario: 0.062%</li>
-<li>mitico: 0.02496%</li>
-<li>epico: 0.5472%</li>
-<li>superespecial: 1.2096%</li>
-<li>especial: 2.7312%</li>
-</ul>
-</li>
-<li>
-Cada 2.5 días se abrirá una caja grande. <b>equivale a 3 cajas brawler</b>
-</li>
-<li>Cada personaje que recibe de un personaje de un tipo de brawler debe ser un personaje que no posea si los posee todos de un tipo se le dará la enorabuena. Si los posee todos se le dirá que ha ganado</li>
 </ul>
 <h2>Notas</h2>
-Se usará la librería random.<br>
-La sentencia random.uniform(0.00001, 100.0) devuelve un número
-flotante de entre 0,00001 y 100<br>
-Es intenteresante crear una lista desordenada con los brawlers que notiene el jugador
-y otra con los que si
+Se usará la librería random.
