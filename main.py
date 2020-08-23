@@ -1,6 +1,7 @@
 import os
 import functions
 import time
+#todo add condition for info file in check functions for users
 from Classes import *
 
 
